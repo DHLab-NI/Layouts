@@ -64,25 +64,64 @@ pageextension 50010 SalesOrderSubformExt extends "Sales Order Subform"
 
         //REORDER AND ADD COLUMNS
 
-        moveafter(FilteredTypeField; "No.")
-        moveafter("No."; "Description")
-        moveafter("Description"; "Shortcut Dimension 1 Code")
-        moveafter("Shortcut Dimension 1 Code"; "Shortcut Dimension 2 Code")
-        moveafter("Shortcut Dimension 2 Code"; "Location Code")
-        moveafter("Location Code"; "Quantity")
-        moveafter("Quantity"; "Work Type Code")
-        moveafter("Work Type Code"; "Unit of Measure Code")
-        moveafter("Unit of Measure Code"; "Unit Price")
-        moveafter("Unit Price"; "Line Discount %")
-        moveafter("Line Discount %"; "Line Amount")
-        moveafter("Line Amount"; "Qty. to Ship")
-        moveafter("Qty. to Ship"; "Quantity Shipped")
-        moveafter("Quantity Shipped"; "Qty. to Invoice")
-        moveafter("Qty. to Invoice"; "Quantity Invoiced")
-        moveafter("Quantity Invoiced"; "Purchasing Code")
-        moveafter("Purchasing Code"; "Drop Shipment")
-        moveafter("Drop Shipment"; "Planned Delivery Date")
-        moveafter("Planned Delivery Date"; "Shipment Date")
+        movefirst(Control1; FilteredTypeField, "No.", "Description", "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code",
+                    "Location Code", Quantity, "Work Type Code", "Unit of Measure Code", "Unit Price", "Line Discount %",
+                    "Line Amount", "Qty. to Ship", "Quantity Shipped", "Qty. to Invoice", "Quantity Invoiced",
+                    "Purchasing Code", "Drop Shipment", "Planned Delivery Date", "Shipment Date")
+
+        addafter("Purchasing Code")
+        {
+            field("Purchase Order No."; Rec."Purchase Order No.")
+            {
+                ApplicationArea = Basic, Suite;
+                Visible = True;
+                Importance = Standard;
+
+                // Open Purchase Order order on drilldown
+                DrillDown = true;
+                trigger OnDrillDown()
+                var
+                    POPage: Page "Purchase Order";
+                    PurchaseOrder: Record "Purchase Header";
+
+                begin
+                    PurchaseOrder.SetRange("No.", rec."Purchase Order No.");
+                    PurchaseOrder.FindFirst();
+                    POPage.SetRecord(PurchaseOrder);
+                    POPage.Run();
+                end;
+            }
+        }
+
+        addafter("Purchase Order No.")
+        {
+            field("Purch. Order Line No."; Rec."Purch. Order Line No.")
+            {
+                ApplicationArea = Basic, Suite;
+                Visible = True;
+                Importance = Standard;
+            }
+        }
+
+        /*        moveafter(FilteredTypeField; "No.")
+                moveafter("No."; "Description")
+                moveafter("Description"; "Shortcut Dimension 1 Code")
+                moveafter("Shortcut Dimension 1 Code"; "Shortcut Dimension 2 Code")
+                moveafter("Shortcut Dimension 2 Code"; "Location Code")
+                moveafter("Location Code"; "Quantity")
+                moveafter("Quantity"; "Work Type Code")
+                moveafter("Work Type Code"; "Unit of Measure Code")
+                moveafter("Unit of Measure Code"; "Unit Price")
+                moveafter("Unit Price"; "Line Discount %")
+                moveafter("Line Discount %"; "Line Amount")
+                moveafter("Line Amount"; "Qty. to Ship")
+                moveafter("Qty. to Ship"; "Quantity Shipped")
+                moveafter("Quantity Shipped"; "Qty. to Invoice")
+                moveafter("Qty. to Invoice"; "Quantity Invoiced")
+                moveafter("Quantity Invoiced"; "Purchasing Code")
+                moveafter("Purchasing Code"; "Drop Shipment")
+                moveafter("Drop Shipment"; "Planned Delivery Date")
+                moveafter("Planned Delivery Date"; "Shipment Date") */
         //
         //
 

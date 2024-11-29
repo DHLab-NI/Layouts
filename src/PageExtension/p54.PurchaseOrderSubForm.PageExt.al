@@ -98,6 +98,20 @@ pageextension 50012 PurchaseOrderSubformExt extends "Purchase Order Subform"
             {
                 ApplicationArea = Basic, Suite;
                 Caption = 'Sales Order No.';
+
+                // Open sales order on drilldown
+                DrillDown = true;
+                trigger OnDrillDown()
+                var
+                    SOPage: Page "Sales Order";
+                    SalesOrder: Record "Sales Header";
+
+                begin
+                    SalesOrder.SetRange("No.", rec."Sales Order No.");
+                    SalesOrder.FindFirst();
+                    SOPage.SetRecord(SalesOrder);
+                    SOPage.Run();
+                end;
             }
         }
         addafter("Sales Order No.")
