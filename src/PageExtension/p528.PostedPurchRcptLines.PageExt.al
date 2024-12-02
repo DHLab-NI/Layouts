@@ -81,5 +81,4 @@ pageextension 50004 PostedPurchRcptLinesExt extends "Posted Purchase Receipt Lin
     }
 
     var
-
 }
