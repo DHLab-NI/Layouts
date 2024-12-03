@@ -34,39 +34,10 @@ pageextension 50004 PostedPurchRcptLinesExt extends "Posted Purchase Receipt Lin
         moveafter(Description; "Location Code")
         moveafter("Location Code"; Quantity)
         moveafter(Quantity; "Unit of Measure Code")
-        addafter("Unit of Measure Code")
-        {
-            field("Sales Order No."; Rec."Sales Order No.")
-            {
-                ApplicationArea = Planning;
-                Caption = 'Sales Order No.';
-                ToolTip = 'Specifies the source Sales Order Number';
 
-                // Open sales order on drilldown
-                DrillDown = true;
-                trigger OnDrillDown()
-                var
-                    SOPage: Page "Sales Order";
-                    SalesOrder: Record "Sales Header";
+        //SGH Moved Sales Order No. and Sales Line Order No to PO Consol Req extension
 
-                begin
-                    SalesOrder.SetRange("No.", rec."Sales Order No.");
-                    SalesOrder.FindFirst();
-                    SOPage.SetRecord(SalesOrder);
-                    SOPage.Run();
-                end;
-            }
-        }
-        addafter("Sales Order No.")
-        {
-            field("Sales Order Line No."; Rec."Sales Order Line No.")
-            {
-                ApplicationArea = Planning;
-                Caption = 'Sales Order Line No.';
-                ToolTip = 'Specifies the source Sales Order Line Number';
-            }
-        }
-        moveafter("Sales Order Line No."; "Buy-from Vendor No.")
+        moveafter("Unit of Measure Code"; "Buy-from Vendor No.")
 
 
         //Specify position of freeze column

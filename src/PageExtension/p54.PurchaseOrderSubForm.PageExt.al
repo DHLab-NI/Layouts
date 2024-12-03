@@ -78,7 +78,8 @@ pageextension 50012 PurchaseOrderSubformExt extends "Purchase Order Subform"
             "Shortcut Dimension 1 Code",
             "Shortcut Dimension 2 Code",
             "Over-Receipt Quantity",
-            "Over-Receipt Code")
+            "Over-Receipt Code",
+            "Planned Receipt Date")
         /*        moveafter("Type"; "No.")
                 moveafter("No."; "Description")
                 moveafter("Description"; "Location Code")
@@ -91,38 +92,8 @@ pageextension 50012 PurchaseOrderSubformExt extends "Purchase Order Subform"
                 moveafter("Quantity Received"; "Qty. to Invoice")
                 moveafter("Qty. to Invoice"; "Quantity Invoiced")
                 moveafter("Quantity Invoiced"; "Shortcut Dimension 1 Code")
-                moveafter("Shortcut Dimension 1 Code"; "Shortcut Dimension 2 Code") */
-        addafter("Shortcut Dimension 2 Code")
-        {
-            field("Sales Order No."; Rec."Sales Order No.")
-            {
-                ApplicationArea = Basic, Suite;
-                Caption = 'Sales Order No.';
-
-                // Open sales order on drilldown
-                DrillDown = true;
-                trigger OnDrillDown()
-                var
-                    SOPage: Page "Sales Order";
-                    SalesOrder: Record "Sales Header";
-
-                begin
-                    SalesOrder.SetRange("No.", rec."Sales Order No.");
-                    SalesOrder.FindFirst();
-                    SOPage.SetRecord(SalesOrder);
-                    SOPage.Run();
-                end;
-            }
-        }
-        addafter("Sales Order No.")
-        {
-            field("Sales Order Line No."; Rec."Sales Order Line No.")
-            {
-                ApplicationArea = Basic, Suite;
-                Caption = 'Sales Order Line No.';
-            }
-        }
-        /*        moveafter("Sales Order Line No."; "Over-Receipt Quantity")
+                moveafter("Shortcut Dimension 1 Code"; "Shortcut Dimension 2 Code") 
+                moveafter("Sales Order Line No."; "Over-Receipt Quantity")
                 moveafter("Over-Receipt Quantity"; "Over-Receipt Code")
                 moveafter("Over-Receipt Code"; "Planned Receipt Date") */
         //
