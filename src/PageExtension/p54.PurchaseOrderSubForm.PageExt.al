@@ -38,8 +38,7 @@ pageextension 50012 PurchaseOrderSubformExt extends "Purchase Order Subform"
 
         //SHOW COLUMNS
 
-        //
-        //
+        modify("Line Discount %") { Visible = true; }
         //
         //
         //
@@ -70,6 +69,7 @@ pageextension 50012 PurchaseOrderSubformExt extends "Purchase Order Subform"
             Quantity,
             "Unit of Measure Code",
             "Direct Unit Cost",
+            "Line Discount %",
             "Line Amount",
             "Qty. to Receive",
             "Quantity Received",
