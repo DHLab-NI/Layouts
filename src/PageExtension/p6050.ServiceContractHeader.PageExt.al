@@ -67,6 +67,8 @@ pageextension 50031 ServiceContractHeaderExt extends "Service Contract"
 
         //Move fields to Invoicing Section
         moveafter("Payment Terms Code"; InvoicePeriod, Prepaid, "Invoice after Service")
+        //Move fields to General Section
+        moveafter("Starting Date"; "Expiration Date")
 
         //Specficy order of sections
         movefirst(content;
