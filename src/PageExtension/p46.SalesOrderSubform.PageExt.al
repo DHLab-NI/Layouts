@@ -27,6 +27,7 @@ pageextension 50010 SalesOrderSubformExt extends "Sales Order Subform"
         modify("Planned Shipment Date") { Visible = false; }
         //
         //
+        modify("Drop Shipment") { Visible = false; }
         //
         //
         //
@@ -56,7 +57,6 @@ pageextension 50010 SalesOrderSubformExt extends "Sales Order Subform"
         //
         //
         //
-        modify("Drop Shipment") { Visible = true; }
         //
         //
         //
@@ -68,40 +68,6 @@ pageextension 50010 SalesOrderSubformExt extends "Sales Order Subform"
                     "Location Code", Quantity, "Work Type Code", "Unit of Measure Code", "Unit Price", "Line Discount %",
                     "Line Amount", "Qty. to Ship", "Quantity Shipped", "Qty. to Invoice", "Quantity Invoiced",
                     "Purchasing Code", "Drop Shipment", "Planned Delivery Date", "Shipment Date")
-
-        addafter("Purchasing Code")
-        {
-            field("Purchase Order No."; Rec."Purchase Order No.")
-            {
-                ApplicationArea = Basic, Suite;
-                Visible = True;
-                Importance = Standard;
-
-                // Open Purchase Order order on drilldown
-                DrillDown = true;
-                trigger OnDrillDown()
-                var
-                    POPage: Page "Purchase Order";
-                    PurchaseOrder: Record "Purchase Header";
-
-                begin
-                    PurchaseOrder.SetRange("No.", rec."Purchase Order No.");
-                    PurchaseOrder.FindFirst();
-                    POPage.SetRecord(PurchaseOrder);
-                    POPage.Run();
-                end;
-            }
-        }
-
-        addafter("Purchase Order No.")
-        {
-            field("Purch. Order Line No."; Rec."Purch. Order Line No.")
-            {
-                ApplicationArea = Basic, Suite;
-                Visible = True;
-                Importance = Standard;
-            }
-        }
 
         /*        moveafter(FilteredTypeField; "No.")
                 moveafter("No."; "Description")
