@@ -43,6 +43,7 @@ pageextension 50021 PostedPurchaseReceiptsExt extends "Posted Purchase Receipts"
         //
         //
         modify("Buy-from Vendor Name") { Visible = true; }
+        modify("Posting Date") { Visible = true; }
         //
         //
         //
