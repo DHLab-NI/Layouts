@@ -60,7 +60,6 @@ pageextension 50024 SalesLinesExt extends "Sales Lines"
         //
         //
         //
-        //
 
         //REORDER AND ADD COLUMNS
 
@@ -73,7 +72,14 @@ pageextension 50024 SalesLinesExt extends "Sales Lines"
         moveafter("Location Code"; "Unit of Measure Code")
         moveafter("Unit of Measure Code"; "Quantity")
         moveafter("Quantity"; "Outstanding Quantity")
-        moveafter("Outstanding Quantity"; "Line Amount")
+        addafter("Outstanding Quantity")
+        {
+            field("Qty. Shipped Not Invoiced"; Rec."Qty. Shipped Not Invoiced")
+            {
+                ApplicationArea = Basic, Suite;
+            }
+        }
+        moveafter("Qty. Shipped Not Invoiced"; "Line Amount")
         addafter("Line Amount")
         {
             field("Promised Delivery Date"; Rec."Promised Delivery Date")
