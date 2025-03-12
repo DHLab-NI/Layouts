@@ -1,4 +1,4 @@
-pageextension 50054 PurchaseOrderExt extends "Purchase Order"
+pageextension 50055 SalesQuoteExt extends "Sales Quote"
 {
     layout
     {
@@ -14,33 +14,37 @@ pageextension 50054 PurchaseOrderExt extends "Purchase Order"
         // General
 
         //Address & Contact
-        modify("Invoice Received Date") { Visible = false; }
-        modify("Quote No.") { Visible = false; }
+        modify("Format Region") { Visible = false; }
+        modify("Language Code") { Visible = false; }
         //Invoice Details
         modify("Prices Including VAT") { Visible = false; }
+        //modify("Direct Debit Mandate ID") { Visible = false; }
         //Payments
-        modify("Prepayment %") { Visible = false; }
+        //modify("Prepayment %") { Visible = false; }
 
         //SHOW FIELDS BY DEFAULT: Visible = True; Importance = Standard;
         // General
-        modify("Posting Date") { Importance = Promoted; }
-        modify("Order Date") { Importance = Promoted; }
-        modify("Shortcut Dimension 1 Code") { Importance = Promoted; }
-        modify("Shortcut Dimension 2 Code") { Importance = Promoted; }
-        modify("Purchaser Code") { Importance = Promoted; }
+        modify("Salesperson Code") { Visible = True; Importance = Standard; }
+        modify(WorkDescription) { Visible = True; Importance = Standard; }
         // Shipping & Billing
+        modify("Shipment Method") { Visible = True; }
         //Shipping
+        modify("Shipping Agent Code") { Visible = True; Importance = Standard; }
+        modify("Shipping Agent Service Code") { Visible = True; Importance = Standard; }
 
         //SHOW FIELDS ON SHOWMORE TAB:  Visible = True; Importance = Additional;
         //General
+        modify("Requested Delivery Date") { Visible = True; Importance = Additional; }
+        //modify("VAT Reporting Date") { Visible = True; Importance = Additional; }
         //Invoice Details
+        modify("EU 3-Party Trade") { Visible = True; Importance = Additional; }
         modify("Payment Discount %") { Visible = True; Importance = Additional; }
 
         // ADD FIELDS NOT ON ORIGINAL FORM:  Visible = True; Importance = Standard/Additional;
 
         // MOVE FIELDs / CHANGE ORDER
-        moveafter("Purchaser Code"; "Shortcut Dimension 1 Code")
-        moveafter("Purchaser Code"; "Shortcut Dimension 2 Code")
+        moveafter("Salesperson Code"; "Shortcut Dimension 1 Code")
+        moveafter("Salesperson Code"; "Shortcut Dimension 2 Code")
     }
 
     actions
