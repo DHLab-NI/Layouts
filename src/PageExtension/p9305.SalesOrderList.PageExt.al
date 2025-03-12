@@ -40,7 +40,7 @@ pageextension 50028 SalesOrderListExt extends "Sales Order List"
         //SHOW COLUMNS
 
         //
-        modify("Document Date") { Visible = true; }
+        modify("Document Date") { Visible = false; }
         //
         //
         //
@@ -55,6 +55,8 @@ pageextension 50028 SalesOrderListExt extends "Sales Order List"
         modify("Bill-to Customer No.") { Visible = true; }
         //
         //
+        modify("Shortcut Dimension 1 Code") { Visible = true; }
+        modify("Shortcut Dimension 2 Code") { Visible = true; }
         //
         //
         //
@@ -64,8 +66,14 @@ pageextension 50028 SalesOrderListExt extends "Sales Order List"
 
         //REORDER AND ADD COLUMNS
 
-        moveafter("No."; "Document Date")
-        moveafter("Document Date"; "Sell-to Customer No.")
+        addafter("No.")
+        {
+            field("Order Date"; Rec."Order Date")
+            {
+                ApplicationArea = Basic, Suite;
+            }
+        }
+        moveafter("Order Date"; "Sell-to Customer No.")
         moveafter("Sell-to Customer No."; "Sell-to Customer Name")
         moveafter("Sell-to Customer Name"; "External Document No.")
         moveafter("External Document No."; "Shortcut Dimension 1 Code")
