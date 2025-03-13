@@ -12,7 +12,14 @@ pageextension 50053 SalesOrderExt extends "Sales Order"
 
         //REMOVE FIELDS: Visible = false;
         // General
-
+        addafter(Status)
+        {
+            field("On Hold"; Rec."On Hold")
+            {
+                Visible = true;
+                ApplicationArea = Basic, Suite;
+            }
+        }
         //Address & Contact
         modify("Format Region") { Visible = false; }
         modify("Language Code") { Visible = false; }
