@@ -1,4 +1,4 @@
-pageextension 50054 PurchaseOrderExt extends "Purchase Order"
+pageextension 50058 PurchaseInvoiceExt extends "Purchase Invoice"
 {
     layout
     {
@@ -13,22 +13,20 @@ pageextension 50054 PurchaseOrderExt extends "Purchase Order"
         //REMOVE FIELDS: Visible = false;
         // General
 
+        modify("Campaign No.") { Visible = false; }
+
         //Address & Contact
-        modify("Invoice Received Date") { Visible = false; }
-        modify("Quote No.") { Visible = false; }
         //Invoice Details
         modify("Prices Including VAT") { Visible = false; }
+        modify("Expected Receipt Date") { Visible = false; }
         //Payments
-        modify("Prepayment %") { Visible = false; }
 
         //SHOW FIELDS BY DEFAULT: Visible = True; Importance = Standard;
         // General
         modify("Posting Date") { Importance = Promoted; }
-        modify("Order Date") { Importance = Promoted; }
         modify("Shortcut Dimension 1 Code") { Importance = Promoted; }
         modify("Shortcut Dimension 2 Code") { Importance = Promoted; }
         modify("Purchaser Code") { Importance = Promoted; }
-        modify("Your Reference") { Importance = Promoted; }
         // Shipping & Billing
         //Shipping
 

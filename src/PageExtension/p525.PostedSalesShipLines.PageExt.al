@@ -1,4 +1,4 @@
-pageextension 50019 PostedSalesShipmentsExt extends "Posted Sales Shipments"
+pageextension 50059 PostedSalesShipLinesExt extends "Posted Sales Shipment Lines"
 {
     layout
     {
@@ -6,23 +6,44 @@ pageextension 50019 PostedSalesShipmentsExt extends "Posted Sales Shipments"
         //HIDE COLUMNS
 
         //
-        modify("Currency Code") { Visible = false; }
+        modify("Quantity Invoiced") { Visible = false; }
         //
 
         //SHOW COLUMNS
 
         //
         //
-
+        //
+        //
         //REORDER AND ADD COLUMNS
 
-        addafter("No.")
+        //
+
+        addafter("Document No.")
+        {
+            field("Posting Date"; Rec."Posting Date")
+            {
+                Visible = true;
+                ApplicationArea = All;
+            }
+        }
+        addafter(Quantity)
+        {
+            field("SO Qty Shipped not invoiced"; Rec."SO Qty Shipped not invoiced")
+            {
+                Visible = true;
+                ApplicationArea = All;
+            }
+        }
+
+        addafter("Document No.")
         {
             field("Order No."; Rec."Order No.")
             {
-                ApplicationArea = Basic, Suite;
+                Visible = true;
                 // Open sales order on drilldown
                 DrillDown = true;
+                ApplicationArea = All;
                 trigger OnDrillDown()
                 var
                     SOPage: Page "Sales Order";
@@ -44,21 +65,15 @@ pageextension 50019 PostedSalesShipmentsExt extends "Posted Sales Shipments"
                 end;
             }
         }
-        moveafter("Order No."; "Document Date")
-        moveafter("Document Date"; "Sell-to Customer No.")
-        moveafter("Sell-to Customer No."; "Sell-to Customer Name")
-        moveafter("Sell-to Customer Name"; "Shortcut Dimension 1 Code")
-        moveafter("Shortcut Dimension 1 Code"; "Shortcut Dimension 2 Code")
-        moveafter("Shortcut Dimension 2 Code"; "Location Code")
-        moveafter("Location Code"; "Ship-to Code")
-        moveafter("Ship-to Code"; "Ship-to Post Code")
-        moveafter("Ship-to Post Code"; "No. Printed")
         //
+        //
+        //
+
 
         //Specify position of freeze column
         modify(Control1)
         {
-            FreezeColumn = "Sell-to Customer No.";
+            FreezeColumn = "Description";
         }
     }
 
@@ -69,3 +84,4 @@ pageextension 50019 PostedSalesShipmentsExt extends "Posted Sales Shipments"
     var
 
 }
+

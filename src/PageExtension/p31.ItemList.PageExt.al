@@ -5,69 +5,27 @@ pageextension 50009 ItemListExt extends "Item List"
 
         //HIDE COLUMNS
 
-        //
-        //
-        //
-        //
-        //
         modify("Assembly BOM") { Visible = false; }
-        //
-        //
-        //
-        //
-        //
-        //
-        //
         modify("Reverse Charge Applies") { Visible = false; }
         modify("Default Deferral Template Code") { Visible = false; }
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
+        modify("Substitutes Exist") { Visible = false; }
+        modify("Cost is Adjusted") { Visible = false; }
+        modify("Unit Price") { Visible = false; }
+        modify("Unit Cost") { Visible = false; }
         //
 
         //SHOW COLUMNS
 
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
         modify("Base Unit of Measure") { Visible = true; }
-        //
-        //
-        //
-        modify("Cost is Adjusted") { Visible = true; }
-        //
-        //
-        //
-        //
-        //
-        //
-        //
+        modify("Shelf No.") { Visible = true; }
 
         //REORDER AND ADD COLUMNS
 
         moveafter("No."; "Description")
         moveafter("Description"; "Vendor No.")
         moveafter("Vendor No."; "Type")
-        moveafter("Type"; "Item Category Code")
+        moveafter(Type; "Shelf No.")
+        moveafter("Shelf No."; "Item Category Code")
         addafter("Item Category Code")
         {
             field("Inventory"; Rec."Inventory")
