@@ -5,61 +5,14 @@ pageextension 50007 VendorListExt extends "Vendor List"
 
         //HIDE COLUMNS
 
-        //
-        //
-        //
         modify("Location Code") { Visible = false; }
-        //
-        //
         modify("Search Name") { Visible = false; }
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
 
         //SHOW COLUMNS
 
         //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
+        modify("Balance (LCY)") { Visible = true; }
+        modify("Currency Code") { Visible = true; }
         //
 
         //REORDER AND ADD COLUMNS
@@ -86,17 +39,6 @@ pageextension 50007 VendorListExt extends "Vendor List"
         moveafter("Outstanding Orders (LCY)"; "Balance (LCY)")
         moveafter("Balance (LCY)"; "Balance Due (LCY)")
         moveafter("Balance Due (LCY)"; "Payments (LCY)")
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
 
 
         //Specify position of freeze column

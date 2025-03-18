@@ -5,62 +5,17 @@ pageextension 50005 CustomerListExt extends "Customer List"
 
         //HIDE COLUMNS
 
-        //
-        //
         modify("Responsibility Center") { Visible = false; }
         modify("Location Code") { Visible = false; }
-        //
-        //
-        //
         modify("Balance Due (LCY)") { Visible = false; }
-        //
         modify("Payments (LCY)") { Visible = false; }
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
 
         //SHOW COLUMNS
 
-        //
-        //
-        //
-        //
+
         modify("Balance (LCY)") { Visible = true; }
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
+        modify("Currency Code") { Visible = true; }
+
 
         //REORDER AND ADD COLUMNS
 
