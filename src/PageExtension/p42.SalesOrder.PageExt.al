@@ -47,7 +47,10 @@ pageextension 50053 SalesOrderExt extends "Sales Order"
         modify("EU 3-Party Trade") { Visible = True; Importance = Additional; }
         modify("Payment Discount %") { Visible = True; Importance = Additional; }
 
-        // ADD FIELDS NOT ON ORIGINAL FORM:  Visible = True; Importance = Standard/Additional;
+        // SHOW RED ASTERISK;
+
+        modify("Shortcut Dimension 1 Code") { ShowMandatory = true; }
+        modify("Shortcut Dimension 2 Code") { ShowMandatory = true; }
 
         // MOVE FIELDs / CHANGE ORDER
         moveafter("Salesperson Code"; "Shortcut Dimension 1 Code")
