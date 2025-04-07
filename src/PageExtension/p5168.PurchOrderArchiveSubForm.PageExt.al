@@ -1,12 +1,12 @@
-pageextension 50012 PurchaseOrderSubformExt extends "Purchase Order Subform"
+pageextension 50063 PurchOrderArchiveSubFormExt extends "Purchase Order Archive Subform"
 {
     layout
     {
         //HIDE COLUMNS
-        modify("Reserved Quantity") { Visible = false; }
+        //modify("Reserved Quantity") { Visible = false; }
         //modify("Qty. to Assign") { Visible = false; }
-        modify("Item Charge Qty. to Handle") { Visible = false; }
-        modify("Qty. Assigned") { Visible = false; }
+        //modify("Item Charge Qty. to Handle") { Visible = false; }
+        //modify("Qty. Assigned") { Visible = false; }
         modify("Planned Receipt Date") { Visible = false; }
         modify("Drop Shipment") { Visible = false; }
 
@@ -16,7 +16,7 @@ pageextension 50012 PurchaseOrderSubformExt extends "Purchase Order Subform"
 
         //REORDER AND ADD COLUMNS
         Movefirst(Control1;
-        FilteredTypeField,
+        Type,
             "No.",
             Description,
             "Location Code",
@@ -31,8 +31,8 @@ pageextension 50012 PurchaseOrderSubformExt extends "Purchase Order Subform"
             "Quantity Invoiced",
             "Shortcut Dimension 1 Code",
             "Shortcut Dimension 2 Code",
-            "Over-Receipt Quantity",
-            "Over-Receipt Code",
+            //"Over-Receipt Quantity",
+            //"Over-Receipt Code",
             "Planned Receipt Date")
 
         //Specify position of freeze column
