@@ -2,69 +2,14 @@ pageextension 50017 PostedSalesInvoiceSubformExt extends "Posted Sales Invoice S
 {
     layout
     {
-
         //HIDE COLUMNS
-
-        //
-        //
         modify("Item Reference No.") { Visible = false; }
-        //
-        //
-        //
-        //
-        //
-        //
         modify("Deferral Code") { Visible = false; }
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
 
         //SHOW COLUMNS
 
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-
         //REORDER AND ADD COLUMNS
-
-        moveafter("Type"; "No.")
+        moveafter(FilteredTypeField; "No.")
         moveafter("No."; "Description")
         moveafter("Description"; "Shortcut Dimension 1 Code")
         moveafter("Shortcut Dimension 1 Code"; "Shortcut Dimension 2 Code")
@@ -83,15 +28,6 @@ pageextension 50017 PostedSalesInvoiceSubformExt extends "Posted Sales Invoice S
         moveafter("Line Discount %"; "Line Amount")
         moveafter("Line Amount"; "VAT Bus. Posting Group")
         moveafter("VAT Bus. Posting Group"; "VAT Prod. Posting Group")
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-
 
         //Specify position of freeze column
         modify(Control1)

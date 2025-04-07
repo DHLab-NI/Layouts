@@ -2,69 +2,15 @@ pageextension 50011 SalesInvoiceSubformExt extends "Sales Invoice Subform"
 {
     layout
     {
-
         //HIDE COLUMNS
-
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
         modify("Qty. to Assign") { Visible = false; }
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
 
         //SHOW COLUMNS
-
-        //
-        //
         modify("Description") { Visible = true; }
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
         modify("Line Amount") { Visible = true; }
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
 
         //REORDER AND ADD COLUMNS
-
-        moveafter("Type"; "No.")
+        moveafter(FilteredTypeField; "No.")
         moveafter("No."; "Description")
         moveafter("Description"; "Shortcut Dimension 1 Code")
         moveafter("Shortcut Dimension 1 Code"; "Shortcut Dimension 2 Code")
