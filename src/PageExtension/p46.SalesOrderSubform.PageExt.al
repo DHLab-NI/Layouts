@@ -5,7 +5,7 @@ pageextension 50010 SalesOrderSubformExt extends "Sales Order Subform"
         //HIDE COLUMNS
         modify("Qty. to Assemble to Order") { Visible = false; }
         modify("Reserved Quantity") { Visible = false; }
-        //modify("Qty. to Assign") { Visible = false; }
+        modify("Qty. to Assign") { Visible = true; }
         modify("Item Charge Qty. to Handle") { Visible = false; }
         modify("Qty. Assigned") { Visible = false; }
         modify("Planned Shipment Date") { Visible = false; }
@@ -20,7 +20,7 @@ pageextension 50010 SalesOrderSubformExt extends "Sales Order Subform"
 
         movefirst(Control1; FilteredTypeField, "No.", "Description", "Shortcut Dimension 1 Code", "Shortcut Dimension 2 Code",
                     "Location Code", Quantity, "Work Type Code", "Unit of Measure Code", "Unit Price", "Line Discount %",
-                    "Line Amount", "Qty. to Ship", "Quantity Shipped", "Qty. to Invoice", "Quantity Invoiced",
+                    "Line Amount", "Qty. to Ship", "Quantity Shipped", "Qty. to Invoice", "Quantity Invoiced", "Qty. to Assign",
                     "Purchasing Code", "Drop Shipment", "Planned Delivery Date", "Shipment Date")
 
         //Specify position of freeze column

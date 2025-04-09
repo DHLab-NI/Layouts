@@ -4,7 +4,7 @@ pageextension 50012 PurchaseOrderSubformExt extends "Purchase Order Subform"
     {
         //HIDE COLUMNS
         modify("Reserved Quantity") { Visible = false; }
-        //modify("Qty. to Assign") { Visible = false; }
+        modify("Qty. to Assign") { Visible = true; }
         modify("Item Charge Qty. to Handle") { Visible = false; }
         modify("Qty. Assigned") { Visible = false; }
         modify("Planned Receipt Date") { Visible = false; }
@@ -29,6 +29,7 @@ pageextension 50012 PurchaseOrderSubformExt extends "Purchase Order Subform"
             "Quantity Received",
             "Qty. to Invoice",
             "Quantity Invoiced",
+            "Qty. to Assign",
             "Shortcut Dimension 1 Code",
             "Shortcut Dimension 2 Code",
             "Over-Receipt Quantity",
