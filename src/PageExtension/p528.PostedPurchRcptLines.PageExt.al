@@ -14,7 +14,29 @@ pageextension 50004 PostedPurchRcptLinesExt extends "Posted Purchase Receipt Lin
         modify("Order No.")
         {
             Visible = true;
-            DrillDownPageId = "Purchase Order";
+
+            trigger OnDrillDown()
+
+            var
+                POPage: Page "Purchase Order";
+                POArchivePage: Page "Purchase Order Archive";
+                PurchOrder: Record "Purchase Header";
+                PurchaseOrderArchive: Record "Purchase Header Archive";
+
+            begin
+                PurchOrder.SetRange("No.", rec."Order No.");
+                PurchaseOrderArchive.SetRange("No.", rec."Order No.");
+                PurchaseOrderArchive.SetAscending("Version No.", false);
+
+                If PurchOrder.FindFirst() then begin
+                    POPage.SetRecord(PurchOrder);
+                    POPage.Run();
+                end else if PurchaseOrderArchive.FindFirst() then begin
+                    POArchivePage.SetRecord(PurchaseOrderArchive);
+                    POArchivePage.Run();
+                end else
+                    Message('Purchase order %1 not found', rec."Order No.");
+            end;
         }
 
 
