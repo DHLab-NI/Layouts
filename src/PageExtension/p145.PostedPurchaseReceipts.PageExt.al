@@ -5,63 +5,10 @@ pageextension 50021 PostedPurchaseReceiptsExt extends "Posted Purchase Receipts"
 
         //HIDE COLUMNS
 
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-
         //SHOW COLUMNS
 
-        //
-        //
-        //
         modify("Buy-from Vendor Name") { Visible = true; }
         modify("Posting Date") { Visible = true; }
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
 
         //REORDER AND ADD COLUMNS
 

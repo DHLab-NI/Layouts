@@ -31,6 +31,7 @@ pageextension 50053 SalesOrderExt extends "Sales Order"
 
         //SHOW FIELDS BY DEFAULT: Visible = True; Importance = Standard;
         // General
+        modify("No.") { Visible = True; Importance = Additional; } // ALLOWS JESSICA TO SET CONTRACT ORDER NO. - REMOVE AFTER SERVICE IMPLEMENTS SOLARVISTA
         modify("Salesperson Code") { Visible = True; Importance = Standard; }
         modify(WorkDescription) { Visible = True; Importance = Standard; }
         // Shipping & Billing
