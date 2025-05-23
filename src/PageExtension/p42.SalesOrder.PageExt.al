@@ -20,6 +20,31 @@ pageextension 50053 SalesOrderExt extends "Sales Order"
                 ApplicationArea = Basic, Suite;
             }
         }
+        addafter("On Hold")
+        {
+            field("Created By"; CreatorUserName)
+            {
+                Visible = true;
+                Importance = Standard;
+                ApplicationArea = All;
+                Editable = false;
+            }
+        }
+        addafter("Created By")
+        {
+            field("Modified By"; ModifiedUserName)
+            {
+                Visible = true;
+                Importance = Standard;
+                ApplicationArea = All;
+                Editable = false;
+            }
+        }
+
+        modify("Posting Date") { Importance = Standard; }
+        modify("Order Date") { Importance = Promoted; }
+        modify("Due Date") { Importance = Additional; }
+
         //Address & Contact
         modify("Format Region") { Visible = false; }
         modify("Language Code") { Visible = false; }
@@ -60,7 +85,54 @@ pageextension 50053 SalesOrderExt extends "Sales Order"
 
     actions
     {
+
     }
 
     var
+        CreatorUserName: Text[100];
+        ModifiedUserName: Text[100];
+
+
+    trigger OnAfterGetRecord()
+    var
+        UserRec: Record User;
+        SystemCreatedByText: Text;
+        SystemModifiedByText: Text;
+        CrGuidStartPos: Integer;
+        CrGuidEndPos: Integer;
+        CrGuidStr: Text[50];
+        ModGuidStartPos: Integer;
+        ModGuidEndPos: Integer;
+        ModGuidStr: Text[50];
+    begin
+        Clear(CreatorUserName);
+        Clear(ModifiedUserName);
+
+        SystemCreatedByText := Rec.SystemCreatedBy;
+        SystemModifiedByText := Rec.SystemModifiedBy;
+
+        // Find the position of the opening and closing brace
+        CrGuidStartPos := StrPos(SystemCreatedByText, '{');
+        CrGuidEndPos := StrPos(SystemCreatedByText, '}');
+        ModGuidStartPos := StrPos(SystemModifiedByText, '{');
+        ModGuidEndPos := StrPos(SystemModifiedByText, '}');
+
+        if (ModGuidStartPos > 0) and (ModGuidEndPos > ModGuidStartPos) then begin
+            // Extract the GUID substring
+            ModGuidStr := CopyStr(SystemModifiedByText, ModGuidStartPos + 1, ModGuidEndPos - ModGuidStartPos - 1);
+
+            // Try to get the user
+            if UserRec.Get(ModGuidStr) then
+                ModifiedUserName := UserRec."User Name";
+        end;
+
+        if (CrGuidStartPos > 0) and (CrGuidEndPos > CrGuidStartPos) then begin
+            // Extract the GUID substring
+            CrGuidStr := CopyStr(SystemCreatedByText, CrGuidStartPos + 1, CrGuidEndPos - CrGuidStartPos - 1);
+
+            // Try to get the user
+            if UserRec.Get(CrGuidStr) then
+                CreatorUserName := UserRec."User Name";
+        end;
+    end;
 }
