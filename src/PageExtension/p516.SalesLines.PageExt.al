@@ -2,64 +2,12 @@ pageextension 50024 SalesLinesExt extends "Sales Lines"
 {
     layout
     {
-
         //HIDE COLUMNS
-
-        //
-        //
-        //
-        //
-        //
-        //
-        //
         modify("Reserve") { Visible = false; }
-        //
         modify("Reserved Qty. (Base)") { Visible = false; }
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
 
         //SHOW COLUMNS
-
-        //
-        //
-        //
-        //
         modify("Description") { Visible = true; }
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
 
         //REORDER AND ADD COLUMNS
 
@@ -88,15 +36,6 @@ pageextension 50024 SalesLinesExt extends "Sales Lines"
             }
         }
         moveafter("Promised Delivery Date"; "Shipment Date")
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
 
 
         //Specify position of freeze column

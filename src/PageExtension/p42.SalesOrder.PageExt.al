@@ -40,6 +40,16 @@ pageextension 50053 SalesOrderExt extends "Sales Order"
                 Editable = false;
             }
         }
+        addafter("Currency Code")
+        {
+            field("Currency Factor"; Rec."Currency Factor")
+            {
+                Visible = false;
+                Importance = Additional;
+                ApplicationArea = All;
+                Editable = false;
+            }
+        }
 
         modify("Posting Date") { Importance = Standard; }
         modify("Order Date") { Importance = Promoted; }
@@ -59,6 +69,7 @@ pageextension 50053 SalesOrderExt extends "Sales Order"
         modify("No.") { Visible = True; Importance = Additional; } // ALLOWS JESSICA TO SET CONTRACT ORDER NO. - REMOVE AFTER SERVICE IMPLEMENTS SOLARVISTA
         modify("Salesperson Code") { Visible = True; Importance = Standard; }
         modify(WorkDescription) { Visible = True; Importance = Standard; }
+
         // Shipping & Billing
         modify("Shipment Method") { Visible = True; }
         //Shipping

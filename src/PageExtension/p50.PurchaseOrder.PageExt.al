@@ -32,6 +32,16 @@ pageextension 50054 PurchaseOrderExt extends "Purchase Order"
                 Editable = false;
             }
         }
+        addafter("Your Reference")
+        {
+            field("Vendor Authorization No."; Rec."Vendor Authorization No.")
+            {
+                Visible = true;
+                Importance = Standard;
+                ApplicationArea = All;
+                Editable = true;
+            }
+        }
         //Address & Contact
         modify("Invoice Received Date") { Visible = false; }
         modify("Quote No.") { Visible = false; }
