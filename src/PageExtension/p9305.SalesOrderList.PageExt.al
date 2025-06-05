@@ -5,64 +5,20 @@ pageextension 50028 SalesOrderListExt extends "Sales Order List"
 
         //HIDE COLUMNS
 
-        //
-        //
-        //
-        //
-        //
         modify("Assigned User ID") { Visible = false; }
-        //
-        //
-        //
-        //
         modify("Amt. Ship. Not Inv. (LCY)") { Visible = false; }
-        //
         modify("Amount Including VAT") { Visible = false; }
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
 
         //SHOW COLUMNS
 
-        //
         modify("Document Date") { Visible = false; }
-        //
-        //
-        //
-        //
-        //
-        //
-        //
         modify("Completely Shipped") { Visible = true; }
         modify("Currency Code") { Visible = true; }
         modify("Amount") { Visible = true; }
         modify("Amt. Ship. Not Inv. (LCY) Base") { Visible = true; }
         modify("Bill-to Customer No.") { Visible = true; }
-        //
-        //
         modify("Shortcut Dimension 1 Code") { Visible = true; }
         modify("Shortcut Dimension 2 Code") { Visible = true; }
-        //
-        //
-        //
-        //
-        //
-        //
 
         //REORDER AND ADD COLUMNS
 
@@ -82,17 +38,17 @@ pageextension 50028 SalesOrderListExt extends "Sales Order List"
         moveafter("Location Code"; "Status")
         moveafter("Status"; "Completely Shipped")
         moveafter("Completely Shipped"; "Currency Code")
-        moveafter("Currency Code"; "Amount")
+        addafter("Currency Code")
+        {
+            field("Currency Factor"; Rec."Currency Factor")
+            {
+                ApplicationArea = Basic, Suite;
+                Visible = false;
+            }
+        }
+        moveafter("Currency Factor"; "Amount")
         moveafter("Amount"; "Amt. Ship. Not Inv. (LCY) Base")
         moveafter("Amt. Ship. Not Inv. (LCY) Base"; "Bill-to Customer No.")
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
 
 
         //Specify position of freeze column
