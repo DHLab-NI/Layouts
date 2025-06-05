@@ -41,6 +41,16 @@ pageextension 50055 SalesQuoteExt extends "Sales Quote"
         modify("Payment Discount %") { Visible = True; Importance = Additional; }
 
         // ADD FIELDS NOT ON ORIGINAL FORM:  Visible = True; Importance = Standard/Additional;
+        addafter("Currency Code")
+        {
+            field("Currency Factor"; Rec."Currency Factor")
+            {
+                Visible = false;
+                Importance = Additional;
+                ApplicationArea = All;
+                Editable = false;
+            }
+        }
 
         // MOVE FIELDs / CHANGE ORDER
         moveafter("Salesperson Code"; "Shortcut Dimension 1 Code")
