@@ -1,4 +1,4 @@
-pageextension 50061 PostedSalesInvExt extends "Posted Sales Invoice"
+pageextension 50072 PostedSalesCrMemoExt extends "Posted Sales Credit Memo"
 {
     layout
     {
@@ -16,7 +16,7 @@ pageextension 50061 PostedSalesInvExt extends "Posted Sales Invoice"
 
         //Address & Contact
         //Invoice Details
-        modify("Direct Debit Mandate ID") { Visible = false; }
+
         //Payments
 
         //SHOW FIELDS BY DEFAULT: Visible = True; Importance = Standard;
@@ -32,7 +32,6 @@ pageextension 50061 PostedSalesInvExt extends "Posted Sales Invoice"
         modify("VAT Reporting Date") { Visible = True; Importance = Additional; }
         //Invoice Details
         modify("EU 3-Party Trade") { Visible = True; Importance = Additional; }
-        modify("Payment Discount %") { Visible = True; Importance = Additional; }
 
         // ADD FIELDS NOT ON ORIGINAL FORM:  Visible = True; Importance = Standard/Additional;
         addafter("Currency Code")
@@ -49,6 +48,8 @@ pageextension 50061 PostedSalesInvExt extends "Posted Sales Invoice"
         // MOVE FIELDs / CHANGE ORDER
         moveafter("Salesperson Code"; "Shortcut Dimension 1 Code")
         moveafter("Salesperson Code"; "Shortcut Dimension 2 Code")
+
+
     }
 
     actions
