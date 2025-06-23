@@ -54,6 +54,9 @@ pageextension 50053 SalesOrderExt extends "Sales Order"
         modify("Posting Date") { Importance = Standard; }
         modify("Order Date") { Importance = Promoted; }
         modify("Due Date") { Importance = Additional; }
+        modify("Sell-to Contact No.") { Importance = Standard; }
+        modify("Sell-to Contact") { Importance = Standard; }
+        moveafter("Sell-to Contact No."; "Sell-to Contact")
 
         //Address & Contact
         modify("Format Region") { Visible = false; }
