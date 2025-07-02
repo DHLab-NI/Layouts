@@ -31,10 +31,10 @@ pageextension 50025 PurchaseLinesExt extends "Purchase Lines"
 
         addafter("Document No.")
         {
-            field("Order Date"; Rec."Order Date")
+            field(HeaderDocumentDate; HeaderDocumentDate)
             {
                 ApplicationArea = All;
-                Caption = 'Order Date';
+                Caption = 'Document Date';
             }
         }
 
@@ -48,4 +48,16 @@ pageextension 50025 PurchaseLinesExt extends "Purchase Lines"
     actions
     {
     }
+
+    var
+        HeaderDocumentDate: Date;
+        PurchaseHeader: Record "Purchase Header";
+
+    trigger OnAfterGetRecord()
+    begin
+        if PurchaseHeader.Get(Rec."Document Type", Rec."Document No.") then
+            HeaderDocumentDate := PurchaseHeader."Document Date"
+        else
+            HeaderDocumentDate := 0D;
+    end;
 }
