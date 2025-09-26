@@ -33,6 +33,9 @@ pageextension 50052 ItemCardExt extends "Item Card"
         //Inventory
         modify("Over-Receipt Code") { Visible = True; Importance = Additional; }
         modify("Unit Volume") { Visible = True; Importance = Additional; }
+        modify("Gross Weight") { Visible = false; }
+        modify("Net Weight") { Visible = true; importance = Standard; }
+
 
         //ADD FIELDS NOT ON ORIGINAL FORM:  Visible = True; Importance = Standard/Additional;
     }
