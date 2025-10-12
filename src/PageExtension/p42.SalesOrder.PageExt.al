@@ -95,6 +95,9 @@ pageextension 50053 SalesOrderExt extends "Sales Order"
         // MOVE FIELDs / CHANGE ORDER
         moveafter("Salesperson Code"; "Shortcut Dimension 1 Code")
         moveafter("Salesperson Code"; "Shortcut Dimension 2 Code")
+
+        //Highlight VAT Bus Posting Group
+        moveafter("Sell-to Customer Name"; "VAT Bus. Posting Group")
     }
 
     actions
