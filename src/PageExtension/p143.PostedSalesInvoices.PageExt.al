@@ -44,6 +44,13 @@ pageextension 50020 PostedSalesInvoicesExt extends "Posted Sales Invoices"
                 Caption = 'Created At';
                 Visible = false;
             }
+            field(SystemCreatedBy; Rec.SystemCreatedBy)
+            {
+                ApplicationArea = All;
+                Caption = 'Created By';
+                Visible = false;
+            }
+
         }
         //
         //
