@@ -10,7 +10,7 @@ pageextension 50004 PostedPurchRcptLinesExt extends "Posted Purchase Receipt Lin
 
 
         //SHOW COLUMNS
-
+        modify("Shortcut Dimension 2 Code") { Visible = true; }
         modify("Order No.")
         {
             Visible = true;
