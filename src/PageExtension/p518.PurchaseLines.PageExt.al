@@ -6,10 +6,12 @@ pageextension 50025 PurchaseLinesExt extends "Purchase Lines"
         modify("Reserved Qty. (Base)") { Visible = false; }
         modify("Document Type") { Visible = false; }
         modify("Direct Unit Cost") { Visible = false; }
+        modify("Shortcut Dimension 1 Code") { Visible = false; }
 
         //SHOW COLUMNS
         modify("Description") { Visible = true; }
         modify("Buy-from Vendor No.") { Visible = true; }
+        modify("Shortcut Dimension 2 Code") { Visible = true; }
 
         //REORDER AND ADD COLUMNS
 
@@ -19,11 +21,13 @@ pageextension 50025 PurchaseLinesExt extends "Purchase Lines"
         "Document No.",
         "No.",
         "Description",
-        "Type",
-        "Location Code",
+        "Shortcut Dimension 1 Code",
+        "Shortcut Dimension 2 Code",
         "Quantity",
         "Outstanding Quantity",
         "Unit of Measure Code",
+        "Location Code",
+        "Type",
         "Expected Receipt Date",
         "Direct Unit Cost",
         "Line Amount"
