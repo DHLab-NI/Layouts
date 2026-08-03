@@ -34,6 +34,25 @@ pageextension 50067 PostedPurchInvLinesExt extends "Posted Purchase Invoice Line
             }
 
         }
+        addafter("Posting Date")
+        {
+            field("Document Date"; DocumentDate)
+            {
+                Visible = true;
+                ApplicationArea = All;
+            }
+
+        }
+        addafter("Document Date")
+        {
+            field("Vendor Invoice No."; VendorInvNo)
+            {
+                Visible = false;
+                ApplicationArea = All;
+            }
+
+        }
+
         //Specify position of freeze column
         modify(Control1)
         {
@@ -46,5 +65,20 @@ pageextension 50067 PostedPurchInvLinesExt extends "Posted Purchase Invoice Line
     }
 
     var
+        DocumentDate: Date;
+        VendorInvNo: Code[35];
 
+    trigger OnAfterGetRecord()
+    var
+        PurchInvHeader: Record "Purch. Inv. Header";
+    begin
+        // Always set a default value to ensure the field appears
+        DocumentDate := 0D;
+        VendorInvNo := '';
+
+        // Get Document Date from the related Purchase Invoice Header record
+        if PurchInvHeader.Get(Rec."Document No.") then
+            DocumentDate := PurchInvHeader."Document Date";
+        VendorInvNo := PurchInvHeader."Vendor Invoice No.";
+    end;
 }
